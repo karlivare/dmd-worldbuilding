@@ -1,27 +1,43 @@
-//Creating animations
+let birdRight;
+let birdLeft;
+let currentBird;
+let otherBird;
 
-//animations like p5 images should be stored in variables
-//in order to be displayed during the draw cycle
-var bird;
-
-//it's advisable (but not necessary) to load the images in the preload function
-//of your sketch otherwise they may appear with a little delay
 // function preload() {
-
-//   //create an animation from a sequence of numbered images
-//   //pass the first and the last file name and it will try to find the ones in between
-//   bird = loadAnimation('bird-down.png', 'bird-up.png');
+//   birdRight = loadImage('birdRight.png');
 // }
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
   frameRate(30);
-  bird = createSprite(0,0);
-  bird.addAnimation('bird.png', { frameSize: [100,100], frames: 2 });
+
+  newCanvas = createGraphics(displayWidth, displayHeight);
+
+  birdRight = new Sprite(mouseX,mouseY);
+  birdRight.addAnimation('birdRight.png', { frameSize: [100,100], frames: 2 });
+  
+  birdLeft = new Sprite(mouseX,mouseY);
+  birdLeft.addAnimation('birdLeft.png', { frameSize: [100,100], frames: 2 });
+
+  birdLeft.overlaps(birdRight);
 }
 
 function draw() {
+  // if mouse is moving left, show left facing bird, otheriwse show right facing bird
   clear();
-  bird.velocity.x = (mouseX-bird.position.x +50 )/10;
-  bird.velocity.y = (mouseY-bird.position.y -50 )/10;
+  if(pmouseX>mouseX){
+   currentBird = birdLeft;
+   otherBird = birdRight;
+  } else{
+    currentBird = birdRight;
+    otherBird = birdLeft;
+  }  
+  currentBird.moveTowards(mouse, 0.10);
+
 }
+
+
+//NOTES WEEK 1 and WEEK 2
+//map function. making two sets of min-max equalized
+//createGraphics(400,400) will make another layer. extracanvas.clear() will make it transparent. extra.Canvas.{whatever you want to make }
+
