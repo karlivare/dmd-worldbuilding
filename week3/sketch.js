@@ -30,12 +30,18 @@ function draw() {
     background(255);
     image(currentDisplay, 0, 0);
     let vol = mic.getLevel();
-    console.log(vol);
+
     if(vol>0.09){
         currentDisplay = img;
     }else{
         currentDisplay = gif;
     }
+
+    if(mouseIsPressed) {
+        console.log("Working!");
+        currentDisplay = img;
+    }
+
     //boolean variable
 //    print(mouseIsPressed);
 //    if(mouseIsPressed===true){
@@ -45,10 +51,6 @@ function draw() {
 //    }
 }
 
-//function mousePressed(){
-//    currentDisplay = img;
-//}
-//
 //function mouseReleased(){
 //    currentDisplay = gif;
 //}
