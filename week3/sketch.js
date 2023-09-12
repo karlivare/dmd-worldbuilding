@@ -16,6 +16,11 @@ function setup(){
   // start the Audio Input.
   // By default, it does not .connect() (to the computer speakers)
     mic.start();
+
+    //get consent for the mic
+    button.addEventListener("click", ()=>{
+        userStartAudio();
+    })
 }
 
 function draw() {
