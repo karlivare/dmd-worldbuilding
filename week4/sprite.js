@@ -20,7 +20,7 @@ class Sprite{
 
         //once bird is off the screen, reset the x position
         if(this.x >width){
-            this.x = -this.w;
+            this.x = -this.w;""
         }
     }
 }
