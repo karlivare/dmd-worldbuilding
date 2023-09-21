@@ -39,7 +39,7 @@ function draw() {
 function mouseClicked(){
   //on click, make a new instance of the bird and push it into the end of the flock array
   console.log("clicked");
-  flock.push(new Sprite(animation, mouseX, mouseY, random(0,1, 1)));
+  flock.push(new Sprite(animation, (mouseX-50), (mouseY-50), random(0,1, 1)));
 }
 
 
